@@ -8,7 +8,7 @@
 void ATQMenuPlayerController::BeginPlay()
 {
     Super::BeginPlay();
-    
+    if (ActiveMenuWidget) return;
     if (MainMenuWidgetClass == nullptr)
     {
         return;

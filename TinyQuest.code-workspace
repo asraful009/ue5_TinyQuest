@@ -1,0 +1,865 @@
+{
+	"folders": [
+		{
+			"name": "TinyQuest",
+			"path": "."
+		},
+		{
+			"name": "UE5",
+			"path": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+		}
+	],
+	"settings": {
+		"typescript.tsc.autoDetect": "off",
+		"npm.autoDetect": "off"
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"ms-dotnettools.csharp"
+		]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "TinyQuest Linux Debug Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"Linux",
+					"Debug",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest Linux Debug Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"Linux",
+					"Debug",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"TinyQuest Linux Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest Linux Debug Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"Linux",
+					"Debug",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest Linux DebugGame Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"Linux",
+					"DebugGame",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest Linux DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"Linux",
+					"DebugGame",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"TinyQuest Linux DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest Linux DebugGame Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"Linux",
+					"DebugGame",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest Linux Development Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"Linux",
+					"Development",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest Linux Development Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"Linux",
+					"Development",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"TinyQuest Linux Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest Linux Development Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"Linux",
+					"Development",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest Linux Test Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"Linux",
+					"Test",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest Linux Test Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"Linux",
+					"Test",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"TinyQuest Linux Test Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest Linux Test Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"Linux",
+					"Test",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest Linux Shipping Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"Linux",
+					"Shipping",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest Linux Shipping Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"Linux",
+					"Shipping",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"TinyQuest Linux Shipping Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest Linux Shipping Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"Linux",
+					"Shipping",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest LinuxArm64 Debug Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"LinuxArm64",
+					"Debug",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest LinuxArm64 Debug Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"LinuxArm64",
+					"Debug",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"TinyQuest LinuxArm64 Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest LinuxArm64 Debug Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"LinuxArm64",
+					"Debug",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest LinuxArm64 DebugGame Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"LinuxArm64",
+					"DebugGame",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest LinuxArm64 DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"LinuxArm64",
+					"DebugGame",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"TinyQuest LinuxArm64 DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest LinuxArm64 DebugGame Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"LinuxArm64",
+					"DebugGame",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest LinuxArm64 Development Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"LinuxArm64",
+					"Development",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest LinuxArm64 Development Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"LinuxArm64",
+					"Development",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"TinyQuest LinuxArm64 Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest LinuxArm64 Development Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"LinuxArm64",
+					"Development",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest LinuxArm64 Test Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"LinuxArm64",
+					"Test",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest LinuxArm64 Test Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"LinuxArm64",
+					"Test",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"TinyQuest LinuxArm64 Test Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest LinuxArm64 Test Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"LinuxArm64",
+					"Test",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest LinuxArm64 Shipping Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"LinuxArm64",
+					"Shipping",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest LinuxArm64 Shipping Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"LinuxArm64",
+					"Shipping",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"TinyQuest LinuxArm64 Shipping Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuest LinuxArm64 Shipping Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuest",
+					"LinuxArm64",
+					"Shipping",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuestEditor Linux Debug Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuestEditor",
+					"Linux",
+					"Debug",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuestEditor Linux Debug Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuestEditor",
+					"Linux",
+					"Debug",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"TinyQuestEditor Linux Debug Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuestEditor Linux Debug Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuestEditor",
+					"Linux",
+					"Debug",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuestEditor Linux DebugGame Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuestEditor",
+					"Linux",
+					"DebugGame",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuestEditor Linux DebugGame Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuestEditor",
+					"Linux",
+					"DebugGame",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"TinyQuestEditor Linux DebugGame Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuestEditor Linux DebugGame Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuestEditor",
+					"Linux",
+					"DebugGame",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuestEditor Linux Development Build",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuestEditor",
+					"Linux",
+					"Development",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuestEditor Linux Development Rebuild",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuestEditor",
+					"Linux",
+					"Development",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex"
+				],
+				"problemMatcher": "$msCompile",
+				"dependsOn": [
+					"TinyQuestEditor Linux Development Clean"
+				],
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			},
+			{
+				"label": "TinyQuestEditor Linux Development Clean",
+				"group": "build",
+				"command": "Engine/Build/BatchFiles/Linux/Build.sh",
+				"args": [
+					"TinyQuestEditor",
+					"Linux",
+					"Development",
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-waitmutex",
+					"-clean"
+				],
+				"problemMatcher": "$msCompile",
+				"type": "shell",
+				"options": {
+					"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+				}
+			}
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Launch TinyQuest (Debug)",
+				"request": "launch",
+				"program": "/home/pavel/projects/ue/ue5_TinyQuest/Binaries/Linux/UnrealGame-Linux-Debug",
+				"preLaunchTask": "TinyQuest Linux Debug Build",
+				"args": [
+				],
+				"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4",
+				"type": "cppdbg",
+				"visualizerFile": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch TinyQuest (DebugGame)",
+				"request": "launch",
+				"program": "/home/pavel/projects/ue/ue5_TinyQuest/Binaries/Linux/UnrealGame-Linux-DebugGame",
+				"preLaunchTask": "TinyQuest Linux DebugGame Build",
+				"args": [
+				],
+				"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4",
+				"type": "cppdbg",
+				"visualizerFile": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch TinyQuest (Development)",
+				"request": "launch",
+				"program": "/home/pavel/projects/ue/ue5_TinyQuest/Binaries/Linux/UnrealGame",
+				"preLaunchTask": "TinyQuest Linux Development Build",
+				"args": [
+				],
+				"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4",
+				"type": "cppdbg",
+				"visualizerFile": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch TinyQuest (Test)",
+				"request": "launch",
+				"program": "/home/pavel/projects/ue/ue5_TinyQuest/Binaries/Linux/UnrealGame-Linux-Test",
+				"preLaunchTask": "TinyQuest Linux Test Build",
+				"args": [
+				],
+				"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4",
+				"type": "cppdbg",
+				"visualizerFile": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch TinyQuest (Shipping)",
+				"request": "launch",
+				"program": "/home/pavel/projects/ue/ue5_TinyQuest/Binaries/Linux/UnrealGame-Linux-Shipping",
+				"preLaunchTask": "TinyQuest Linux Shipping Build",
+				"args": [
+				],
+				"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4",
+				"type": "cppdbg",
+				"visualizerFile": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch TinyQuestEditor (Debug)",
+				"request": "launch",
+				"program": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4/Engine/Binaries/Linux/UnrealEditor-Linux-Debug",
+				"preLaunchTask": "TinyQuestEditor Linux Debug Build",
+				"args": [
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject"
+				],
+				"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4",
+				"type": "cppdbg",
+				"visualizerFile": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch TinyQuestEditor (DebugGame)",
+				"request": "launch",
+				"program": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4/Engine/Binaries/Linux/UnrealEditor-Linux-DebugGame",
+				"preLaunchTask": "TinyQuestEditor Linux DebugGame Build",
+				"args": [
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject"
+				],
+				"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4",
+				"type": "cppdbg",
+				"visualizerFile": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Launch TinyQuestEditor (Development)",
+				"request": "launch",
+				"program": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4/Engine/Binaries/Linux/UnrealEditor",
+				"preLaunchTask": "TinyQuestEditor Linux Development Build",
+				"args": [
+					"/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject"
+				],
+				"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4",
+				"type": "cppdbg",
+				"visualizerFile": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4/Engine/Extras/VisualStudioDebugging/Unreal.natvis",
+				"showDisplayString": true
+			},
+			{
+				"name": "Generate Project Files",
+				"type": "coreclr",
+				"request": "launch",
+				"preLaunchTask": "UnrealBuildTool Linux Development Build",
+				"program": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4/Engine/Build/BatchFiles/RunUBT.bat",
+				"args": [
+					"-projectfiles",
+					"-vscode",
+					"-project=/home/pavel/projects/ue/ue5_TinyQuest/TinyQuest.uproject",
+					"-game",
+					"-engine",
+					"-dotnet"
+				],
+				"console": "internalConsole",
+				"internalConsoleOptions": "openOnSessionStart",
+				"stopAtEntry": false,
+				"cwd": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+			}
+		]
+	}
+}

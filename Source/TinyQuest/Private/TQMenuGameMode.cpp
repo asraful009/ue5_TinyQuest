@@ -3,9 +3,12 @@
 
 #include "TQMenuGameMode.h"
 
+#include "TQMenuPlayerController.h"
+
 ATQMenuGameMode::ATQMenuGameMode()
 {
-    
+    PlayerControllerClass = ATQMenuPlayerController::StaticClass();
+    DefaultPawnClass = nullptr;
 }
 
 void ATQMenuGameMode::BeginPlay()

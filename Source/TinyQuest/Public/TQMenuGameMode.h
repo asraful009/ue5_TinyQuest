@@ -6,6 +6,7 @@
 #include "GameFramework/GameModeBase.h"
 #include "TQMenuGameMode.generated.h"
 
+class UTQMainMenuWidget;
 /**
  * 
  */
@@ -13,7 +14,8 @@ UCLASS()
 class TINYQUEST_API ATQMenuGameMode : public AGameModeBase
 {
     GENERATED_BODY()
-    
+
+
 public:
     ATQMenuGameMode();
     

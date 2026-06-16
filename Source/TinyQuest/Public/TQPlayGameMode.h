@@ -4,19 +4,19 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "TQMenuGameMode.generated.h"
+#include "TQPlayGameMode.generated.h"
 
-class UTQMainMenuWidget;
 /**
  * 
  */
 UCLASS()
-class TINYQUEST_API ATQMenuGameMode : public AGameModeBase
+class TINYQUEST_API ATQPlayGameMode : public AGameModeBase
 {
     GENERATED_BODY()
-
+    
+    
 public:
-    ATQMenuGameMode();
-
+    ATQPlayGameMode();    
+        
     virtual void BeginPlay() override;
 };

@@ -3,7 +3,10 @@
 
 #include "TQMainMenuWidget.h"
 
+#include "TQMenuGameMode.h"
+#include "TQMenuPlayerController.h"
 #include "Components/Button.h"
+#include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 
 void UTQMainMenuWidget::NativeConstruct()
@@ -35,6 +38,17 @@ void UTQMainMenuWidget::NativeDestruct()
 
 void UTQMainMenuWidget::OnPlayButtonClicked()
 {
+    const ATQMenuPlayerController* PC =
+        Cast<ATQMenuPlayerController>(GetOwningPlayer());
+
+    if (PC)
+    {
+        RemoveFromParent();
+        UGameplayStatics::OpenLevelBySoftObjectPtr(
+            this,
+            PC->GetPlayLevel()
+        );
+    }
 }
 
 void UTQMainMenuWidget::OnOptionButtonClicked()

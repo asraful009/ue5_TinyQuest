@@ -27,8 +27,9 @@ private:
     UPROPERTY()
     TObjectPtr<UTQMainMenuWidget> ActiveMenuWidget;
 
-public:
+protected:
     virtual void BeginPlay() override;
 
+public:
     TSoftObjectPtr<UWorld> GetPlayLevel() const { return PlayLevel; }
 };

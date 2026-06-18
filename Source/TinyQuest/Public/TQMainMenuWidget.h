@@ -16,6 +16,7 @@ class TINYQUEST_API UTQMainMenuWidget : public UUserWidget
 {
     GENERATED_BODY()
 
+    
 protected:
     virtual void NativeConstruct() override;
     virtual void NativeDestruct() override;
@@ -30,7 +31,10 @@ protected:
     TObjectPtr<UButton> ExitButton;
     
 private:
-    UFUNCTION()    
+    bool bIsTransitioning = false;
+    
+private:
+    UFUNCTION()
     void OnPlayButtonClicked();
     
     UFUNCTION()

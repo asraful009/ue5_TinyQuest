@@ -3,7 +3,6 @@
 
 #include "TQMainMenuWidget.h"
 
-#include "TQMenuGameMode.h"
 #include "TQMenuPlayerController.h"
 #include "Components/Button.h"
 #include "Kismet/GameplayStatics.h"
@@ -24,7 +23,9 @@ void UTQMainMenuWidget::NativeConstruct()
     }
 
     if (ExitButton)
+    {
         ExitButton->OnClicked.AddDynamic(this, &UTQMainMenuWidget::OnExitButtonClicked);
+    }
 }
 
 void UTQMainMenuWidget::NativeDestruct()
@@ -38,11 +39,20 @@ void UTQMainMenuWidget::NativeDestruct()
 
 void UTQMainMenuWidget::OnPlayButtonClicked()
 {
+    if (bIsTransitioning)
+    {
+        return;
+    }
     const ATQMenuPlayerController* PC =
         Cast<ATQMenuPlayerController>(GetOwningPlayer());
 
     if (PC)
     {
+        bIsTransitioning = true;
+        if (PlayButton)   { PlayButton->SetIsEnabled(false); }
+        if (OptionButton) { OptionButton->SetIsEnabled(false); }
+        if (ExitButton)   { ExitButton->SetIsEnabled(false); }
+        
         RemoveFromParent();
         UGameplayStatics::OpenLevelBySoftObjectPtr(
             this,
@@ -57,6 +67,16 @@ void UTQMainMenuWidget::OnOptionButtonClicked()
 
 void UTQMainMenuWidget::OnExitButtonClicked()
 {
+    if (bIsTransitioning)
+    {
+        return;
+    }
+ 
+    bIsTransitioning = true;
+    if (PlayButton)   { PlayButton->SetIsEnabled(false); }
+    if (OptionButton) { OptionButton->SetIsEnabled(false); }
+    if (ExitButton)   { ExitButton->SetIsEnabled(false); }
+    
     UKismetSystemLibrary::QuitGame(
         this,
         GetOwningPlayer(),

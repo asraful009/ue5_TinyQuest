@@ -18,5 +18,6 @@ class TINYQUEST_API ATQMenuGameMode : public AGameModeBase
 public:
     ATQMenuGameMode();
 
+protected:
     virtual void BeginPlay() override;
 };

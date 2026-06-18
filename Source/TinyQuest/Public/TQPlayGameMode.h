@@ -16,7 +16,8 @@ class TINYQUEST_API ATQPlayGameMode : public AGameModeBase
     
     
 public:
-    ATQPlayGameMode();    
-        
+    ATQPlayGameMode();
+
+protected:
     virtual void BeginPlay() override;
 };

@@ -25,4 +25,10 @@ public:
 
     // Called to bind functionality to input
     virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+    
+    void Move(const FVector2D& MovementVector);
+    void Look(const FVector2D& LookVector);
+    void JumpCharacter();
+    void StopJumpingCharacter();
+    
 };

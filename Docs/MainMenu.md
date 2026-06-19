@@ -280,11 +280,15 @@ This clean separation ensures the Main Menu remains lightweight and independent 
 
 class UButton;
 
+/**
+ * 
+ */
 UCLASS()
 class TINYQUEST_API UTQMainMenuWidget : public UUserWidget
 {
     GENERATED_BODY()
 
+    
 protected:
     virtual void NativeConstruct() override;
     virtual void NativeDestruct() override;
@@ -297,10 +301,10 @@ protected:
     
     UPROPERTY(meta = (BindWidget))
     TObjectPtr<UButton> ExitButton;
-        
+    
 private:
     bool bIsTransitioning = false;
-
+    
 private:
     UFUNCTION()
     void OnPlayButtonClicked();
@@ -310,7 +314,11 @@ private:
     
     UFUNCTION()
     void OnExitButtonClicked();
+    
+    UFUNCTION()
+    void SetMenuButtonsEnabled(const bool bNewEnabledState) const;
 };
+
 ```
 
 **TQMainMenuWidget.cpp**
@@ -366,10 +374,7 @@ void UTQMainMenuWidget::OnPlayButtonClicked()
     if (PC)
     {
         bIsTransitioning = true;
-        if (PlayButton)   { PlayButton->SetIsEnabled(false); }
-        if (OptionButton) { OptionButton->SetIsEnabled(false); }
-        if (ExitButton)   { ExitButton->SetIsEnabled(false); }
-        
+        SetMenuButtonsEnabled(!bIsTransitioning);
         RemoveFromParent();
         UGameplayStatics::OpenLevelBySoftObjectPtr(
             this,
@@ -380,6 +385,7 @@ void UTQMainMenuWidget::OnPlayButtonClicked()
 
 void UTQMainMenuWidget::OnOptionButtonClicked()
 {
+    // TODO : Create a Options
 }
 
 void UTQMainMenuWidget::OnExitButtonClicked()
@@ -388,18 +394,22 @@ void UTQMainMenuWidget::OnExitButtonClicked()
     {
         return;
     }
- 
+
     bIsTransitioning = true;
-    if (PlayButton)   { PlayButton->SetIsEnabled(false); }
-    if (OptionButton) { OptionButton->SetIsEnabled(false); }
-    if (ExitButton)   { ExitButton->SetIsEnabled(false); }
-    
+    SetMenuButtonsEnabled(!bIsTransitioning);
     UKismetSystemLibrary::QuitGame(
         this,
         GetOwningPlayer(),
         EQuitPreference::Quit,
         true
     );
+}
+
+void UTQMainMenuWidget::SetMenuButtonsEnabled(const bool bNewEnabledState) const
+{
+    if (PlayButton) { PlayButton->SetIsEnabled(bNewEnabledState); }
+    if (OptionButton) { OptionButton->SetIsEnabled(bNewEnabledState); }
+    if (ExitButton) { ExitButton->SetIsEnabled(bNewEnabledState); }
 }
 
 ```

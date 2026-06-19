@@ -42,4 +42,7 @@ private:
     
     UFUNCTION()
     void OnExitButtonClicked();
+    
+    UFUNCTION()
+    void SetMenuButtonsEnabled(const bool bNewEnabledState) const;
 };

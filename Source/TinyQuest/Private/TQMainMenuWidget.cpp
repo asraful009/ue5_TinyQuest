@@ -49,10 +49,7 @@ void UTQMainMenuWidget::OnPlayButtonClicked()
     if (PC)
     {
         bIsTransitioning = true;
-        if (PlayButton)   { PlayButton->SetIsEnabled(false); }
-        if (OptionButton) { OptionButton->SetIsEnabled(false); }
-        if (ExitButton)   { ExitButton->SetIsEnabled(false); }
-        
+        SetMenuButtonsEnabled(!bIsTransitioning);
         RemoveFromParent();
         UGameplayStatics::OpenLevelBySoftObjectPtr(
             this,
@@ -63,6 +60,7 @@ void UTQMainMenuWidget::OnPlayButtonClicked()
 
 void UTQMainMenuWidget::OnOptionButtonClicked()
 {
+    // TODO : Create a Options
 }
 
 void UTQMainMenuWidget::OnExitButtonClicked()
@@ -71,16 +69,20 @@ void UTQMainMenuWidget::OnExitButtonClicked()
     {
         return;
     }
- 
+
     bIsTransitioning = true;
-    if (PlayButton)   { PlayButton->SetIsEnabled(false); }
-    if (OptionButton) { OptionButton->SetIsEnabled(false); }
-    if (ExitButton)   { ExitButton->SetIsEnabled(false); }
-    
+    SetMenuButtonsEnabled(!bIsTransitioning);
     UKismetSystemLibrary::QuitGame(
         this,
         GetOwningPlayer(),
         EQuitPreference::Quit,
         true
     );
+}
+
+void UTQMainMenuWidget::SetMenuButtonsEnabled(const bool bNewEnabledState) const
+{
+    if (PlayButton) { PlayButton->SetIsEnabled(bNewEnabledState); }
+    if (OptionButton) { OptionButton->SetIsEnabled(bNewEnabledState); }
+    if (ExitButton) { ExitButton->SetIsEnabled(bNewEnabledState); }
 }

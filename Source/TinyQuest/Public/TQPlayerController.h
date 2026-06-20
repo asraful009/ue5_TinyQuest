@@ -45,6 +45,14 @@ protected:
 
     UFUNCTION()
     void HandleMovement(const FInputActionValue& Value);
+    
+    UFUNCTION()
+    void HandleLook(const FInputActionValue& Value);
 
-
+    UFUNCTION()
+    void HandleJumpStart(const FInputActionValue& Value);
+    
+    UFUNCTION()
+    void HandleJumpEnd(const FInputActionValue& Value);
+    
 };

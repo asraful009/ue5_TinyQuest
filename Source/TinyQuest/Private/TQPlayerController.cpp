@@ -5,6 +5,7 @@
 
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "TQPlayerCharacter.h"
 
 ATQPlayerController::ATQPlayerController()
 {
@@ -42,10 +43,52 @@ void ATQPlayerController::SetupInputComponent()
         {
             EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &ATQPlayerController::HandleMovement);
         }
+        if (LookAction)
+            EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ATQPlayerController::HandleLook);
+
+        if (JumpAction)
+        {
+            // Bind both Pressed (Triggered) and Released (Completed) structural events
+            EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ATQPlayerController::HandleJumpStart);
+            EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ATQPlayerController::HandleJumpEnd);
+        }
     }
 }
 
 void ATQPlayerController::HandleMovement(const FInputActionValue& Value)
 {
-    FVector2D MovementVector = Value.Get<FVector2D>();
+    
+    const FVector2D MovementVector = Value.Get<FVector2D>();
+    if (TObjectPtr<ATQPlayerCharacter> TargetCharacter = Cast<ATQPlayerCharacter>(GetPawn()))
+    {
+        TargetCharacter->MoveHandler(MovementVector);
+    }
 }
+
+void ATQPlayerController::HandleLook(const FInputActionValue& Value)
+{
+    const FVector2D MovementVector = Value.Get<FVector2D>();
+    if (TObjectPtr<ATQPlayerCharacter> TargetCharacter = Cast<ATQPlayerCharacter>(GetPawn()))
+    {
+        TargetCharacter->LookHandler(MovementVector);
+    }
+}
+
+
+void ATQPlayerController::HandleJumpStart(const FInputActionValue& Value)
+{
+    if (TObjectPtr<ATQPlayerCharacter> TargetCharacter = Cast<ATQPlayerCharacter>(GetPawn()))
+    {
+        TargetCharacter->JumpHandler();
+    }
+}
+
+void ATQPlayerController::HandleJumpEnd(const FInputActionValue& Value)
+{
+    if (TObjectPtr<ATQPlayerCharacter> TargetCharacter = Cast<ATQPlayerCharacter>(GetPawn()))
+    {
+        TargetCharacter->JumpingStopHandler();
+    }
+}
+
+

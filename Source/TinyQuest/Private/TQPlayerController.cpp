@@ -15,6 +15,12 @@ ATQPlayerController::ATQPlayerController()
 void ATQPlayerController::BeginPlay()
 {
     Super::BeginPlay();
+    const FInputModeGameOnly InputMode;
+    SetInputMode(InputMode);
+    bShowMouseCursor = false;
+    UE_LOG(LogTemp, Warning, TEXT("ATQPlayerController::BeginPlay()"));
+    UE_LOG(LogTemp, Warning, TEXT("Controller: %s"),
+        *GetNameSafe(GetPawn()));
 }
 
 void ATQPlayerController::OnPossess(APawn* InPawn)

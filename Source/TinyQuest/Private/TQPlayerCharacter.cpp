@@ -26,6 +26,7 @@ ATQPlayerCharacter::ATQPlayerCharacter()
 void ATQPlayerCharacter::BeginPlay()
 {
     Super::BeginPlay();
+    UE_LOG(LogTemp, Warning, TEXT("ATQPlayerCharacter::BeginPlay()"));
 }
 
 // Called every frame

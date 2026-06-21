@@ -1,4 +1,3 @@
-
 # Main Menu System
 
 ## Overview
@@ -504,4 +503,3 @@ void ATQMenuGameMode::BeginPlay()
 }
 
 ```
-

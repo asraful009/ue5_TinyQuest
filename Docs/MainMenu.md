@@ -271,8 +271,9 @@ The new map creates its own GameMode, PlayerController, HUD, widgets, and gamepl
 
 This clean separation ensures the Main Menu remains lightweight and independent from gameplay systems.
 
----
-### Code Sections
+
+## Appendix: Full Source
+
 
 **UTQMainMenuWidget.h**
 ```c++

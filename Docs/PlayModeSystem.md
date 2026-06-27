@@ -10,7 +10,7 @@ Three classes work together to get a controllable character into the world:
 |---|---|
 | `ATQPlayGameMode` | Tells Unreal which controller class to spawn for players. |
 | `ATQPlayerController` | Owns Enhanced Input setup, binds input actions, and forwards input events to the possessed pawn. |
-| `ATQPlayerCharacter` | The pawn itself — converts raw input vectors into movement, camera look, and jumping. |
+| `ATQPlayerCharacter` | The pawn itself — owns the spring-arm/camera hierarchy, converts raw input vectors into movement, camera look, and jumping. |
 
 ```
 GameMode
@@ -102,7 +102,16 @@ The swizzle on `W`/`S` remaps the key's raw axis output from X onto Y, so `W`/`S
 
 ## `ATQPlayerCharacter`
 
-The pawn that actually moves, looks, and jumps.
+The pawn that actually moves, looks, and jumps. It owns the spring-arm/camera hierarchy in C++.
+
+### Components
+
+| Property | Type | Category |
+|---|---|---|
+| `CameraBoom` | `USpringArmComponent*` | `TQ\|Camera` |
+| `FollowCamera` | `UCameraComponent*` | `TQ\|Camera` |
+
+Both are `VisibleAnywhere, BlueprintReadOnly` — visible in the editor hierarchy but not reassignable from Blueprint.
 
 ### Construction
 
@@ -110,6 +119,13 @@ The pawn that actually moves, looks, and jumps.
 - `bUseControllerRotationPitch/Yaw/Roll = false` — the character does not snap its mesh rotation to the controller; instead:
   - `CharacterMovementComponent->bOrientRotationToMovement = true` — the character rotates to face its movement direction.
   - `RotationRate = FRotator(0, 500, 0)` — controls how fast that turn happens (yaw only).
+- **`CameraBoom`** — created as a default subobject and attached to `RootComponent`:
+  - `TargetArmLength = 350.0f` — keeps the camera roughly 3.5 m behind the character.
+  - `bUsePawnControlRotation = true` — the arm follows the controller's view rotation (mouse look pivots the camera around the character).
+  - `bEnableCameraLag = true` / `CameraLagSpeed = 10.0f` — adds a small positional lag so the camera trails the character smoothly rather than snapping.
+  - `bDoCollisionTest = true` — the arm shortens automatically when geometry sits between the character and the camera.
+- **`FollowCamera`** — created as a default subobject and attached to `CameraBoom` at `USpringArmComponent::SocketName` (the arm's tip socket):
+  - `bUsePawnControlRotation = false` — the camera inherits rotation from the boom; it does not additionally rotate with the controller. This is the standard third-person setup: the boom rotates, the camera stays fixed on the end of the boom.
 
 ### `BeginPlay()` / `Tick()`
 
@@ -125,7 +141,7 @@ Builds forward/right basis vectors from the **controller's current yaw** (camera
 ```cpp
 void ATQPlayerCharacter::LookHandler(const FVector2D& LookVector)
 ```
-Directly applies `AddControllerYawInput` / `AddControllerPitchInput` from the look vector — no sensitivity scaling is applied at this layer (expected to be configured on the Input Action / IMC modifiers instead).
+Directly applies `AddControllerYawInput` / `AddControllerPitchInput` from the look vector — no sensitivity scaling is applied at this layer (expected to be configured on the Input Action / IMC modifiers instead). Because `CameraBoom->bUsePawnControlRotation = true`, rotating the controller yaw/pitch here also pivots the camera arm.
 
 ### Jumping
 
@@ -136,7 +152,7 @@ Directly applies `AddControllerYawInput` / `AddControllerPitchInput` from the lo
 - **Tick is disabled** on the character (`bCanEverTick = false`) but `Tick()` is still overridden and bound — harmless, but it's dead code unless re-enabled later.
 - **No null checks on `MoveAction`/`LookAction` before binding individual ones** — `MoveAction` and `JumpAction` are guarded with `if`, `LookAction`'s bind isn't wrapped in braces (works fine due to single-statement `if`, but is inconsistent style with the others).
 - **Look sensitivity / mouse vs. gamepad scaling** isn't handled in code — confirm this is intentional and configured via Input Modifiers on the `LookAction` asset.
-- **Camera component** isn't shown in this character class — if a `USpringArmComponent`/`UCameraComponent` exists, it's likely added in a Blueprint subclass rather than here.
+- **Camera pitch clamping** — `AddControllerPitchInput` is unbounded here; if the arm can clip through the ground on a steep downward look, consider setting `CameraBoom->ProbeSize` or clamping pitch via `PlayerCameraManager->ViewPitchMin/Max` (configurable in the PlayerController or Camera Manager class defaults).
 - **`A` key's Negate modifier includes Z**, but `Move_IA` is only ever consumed as an `FVector2D` — harmless, just inconsistent with `S`'s modifier stack which negates explicitly after a swizzle.
 
 ## Appendix: Full Source
@@ -152,11 +168,22 @@ Directly applies `AddControllerYawInput` / `AddControllerPitchInput` from the lo
 #include "GameFramework/Character.h"
 #include "TQPlayerCharacter.generated.h"
 
+class USpringArmComponent;
+class UCameraComponent;
+
 UCLASS()
 class TINYQUEST_API ATQPlayerCharacter : public ACharacter
 {
     GENERATED_BODY()
 
+protected:
+    
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="TQ|Camera")
+    TObjectPtr<USpringArmComponent> CameraBoom;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="TQ|Camera")
+    TObjectPtr<UCameraComponent> FollowCamera;
+    
 public:
     // Sets default values for this character's properties
     ATQPlayerCharacter();
@@ -189,6 +216,8 @@ public:
 #include "TQPlayerCharacter.h"
 
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Camera/CameraComponent.h"
+#include "GameFramework/SpringArmComponent.h"
 
 // Sets default values
 ATQPlayerCharacter::ATQPlayerCharacter()
@@ -205,6 +234,20 @@ ATQPlayerCharacter::ATQPlayerCharacter()
         MoveComp->bOrientRotationToMovement = true; // Character automatically faces moving vector
         MoveComp->RotationRate = FRotator(0.0f, 500.0f, 0.0f); // Smooth turning rate
     }
+    
+    CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
+    CameraBoom->SetupAttachment(RootComponent);
+
+    CameraBoom->TargetArmLength = 350.0f;
+    CameraBoom->bUsePawnControlRotation = true;
+    CameraBoom->bEnableCameraLag = true;
+    CameraBoom->CameraLagSpeed = 10.f;
+    CameraBoom->bDoCollisionTest = true;
+
+    FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
+    FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
+    FollowCamera->bUsePawnControlRotation = false;
+
 }
 
 // Called when the game starts or when spawned

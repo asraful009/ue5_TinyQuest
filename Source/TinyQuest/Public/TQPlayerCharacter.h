@@ -6,11 +6,22 @@
 #include "GameFramework/Character.h"
 #include "TQPlayerCharacter.generated.h"
 
+class USpringArmComponent;
+class UCameraComponent;
+
 UCLASS()
 class TINYQUEST_API ATQPlayerCharacter : public ACharacter
 {
     GENERATED_BODY()
 
+protected:
+    
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="TQ|Camera")
+    TObjectPtr<USpringArmComponent> CameraBoom;
+
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="TQ|Camera")
+    TObjectPtr<UCameraComponent> FollowCamera;
+    
 public:
     // Sets default values for this character's properties
     ATQPlayerCharacter();

@@ -4,6 +4,8 @@
 #include "TQPlayerCharacter.h"
 
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Camera/CameraComponent.h"
+#include "GameFramework/SpringArmComponent.h"
 
 // Sets default values
 ATQPlayerCharacter::ATQPlayerCharacter()
@@ -20,6 +22,20 @@ ATQPlayerCharacter::ATQPlayerCharacter()
         MoveComp->bOrientRotationToMovement = true; // Character automatically faces moving vector
         MoveComp->RotationRate = FRotator(0.0f, 500.0f, 0.0f); // Smooth turning rate
     }
+    
+    CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
+    CameraBoom->SetupAttachment(RootComponent);
+
+    CameraBoom->TargetArmLength = 350.0f;
+    CameraBoom->bUsePawnControlRotation = true;
+    CameraBoom->bEnableCameraLag = true;
+    CameraBoom->CameraLagSpeed = 10.f;
+    CameraBoom->bDoCollisionTest = true;
+
+    FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
+    FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
+    FollowCamera->bUsePawnControlRotation = false;
+
 }
 
 // Called when the game starts or when spawned

@@ -1,4 +1,6 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+/**
+ *
+ */
 
 #pragma once
 
@@ -10,6 +12,7 @@ enum class ETQQuestState : uint8
 {
     NotStarted UMETA(DisplayName = "Not Started", ToolTip = "The quest has not started yet."),
     Active UMETA(DisplayName = "Active", ToolTip = "The quest is currently active."),
+    Canceled UMETA(DisplayName = "Canceled", ToolTip = "The quest has been canceled."),
     Completed UMETA(DisplayName = "Completed", ToolTip = "The quest has been completed.")
 };
 

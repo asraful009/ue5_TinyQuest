@@ -1,12 +1,7 @@
 {
 	"folders": [
 		{
-			"name": "TinyQuest",
-			"path": "."
-		},
-		{
-			"name": "UE5",
-			"path": "/home/pavel/.local/share/ue/Linux_Unreal_Engine_5.4.4"
+			"path": "../../learn/learn-rust/r-01"
 		}
 	],
 	"settings": {

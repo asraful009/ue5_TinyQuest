@@ -1,0 +1,64 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "TQQuestTypes.generated.h"
+
+UENUM(BlueprintType)
+enum class ETQQuestState : uint8
+{
+	NotStarted
+	   UMETA(
+		   DisplayName = "Not Started",
+		   ToolTip = "The quest has not started yet."
+	   ),
+
+   Active
+	   UMETA(
+		   DisplayName = "Active",
+		   ToolTip = "The quest is currently active."
+	   ),
+
+   Completed
+	   UMETA(
+		   DisplayName = "Completed",
+		   ToolTip = "The quest has been completed."
+	   )
+};
+
+UENUM(BlueprintType)
+enum class ETQQuestType : uint8
+{
+	FindObject
+	UMETA(
+		DisplayName = "Find Object",
+		ToolTip = "Find a specific object in the world."
+	),
+
+	TalkToCharacter
+	UMETA(
+		DisplayName = "Talk To Character",
+		ToolTip = "Talk to a specific character."
+	),
+
+	GoToLocation
+	UMETA(
+		DisplayName = "Go To Location",
+		ToolTip = "Reach a specific location."
+	),
+
+	CollectObjects
+	UMETA(
+		DisplayName = "Collect Objects",
+		ToolTip = "Collect one or more objects."
+	),
+
+	InteractWithObject
+	UMETA(
+		DisplayName = "Interact With Object",
+		ToolTip = "Interact with a specific object."
+	)
+};
+
+

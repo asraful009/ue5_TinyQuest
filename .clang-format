@@ -1,0 +1,119 @@
+---
+Language: Cpp
+
+# ============================================================
+# TinyQuest - Unreal Engine 5 C++ Style
+# Google-inspired formatting + UE conventions
+# ============================================================
+
+BasedOnStyle: Google
+
+# ------------------------------------------------------------
+# Indentation
+# ------------------------------------------------------------
+
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ContinuationIndentWidth: 4
+
+# ------------------------------------------------------------
+# Line length
+# ------------------------------------------------------------
+
+ColumnLimit: 120
+
+# ------------------------------------------------------------
+# Braces - Allman Style
+# ------------------------------------------------------------
+
+BreakBeforeBraces: Allman
+
+# ------------------------------------------------------------
+# Spaces
+# ------------------------------------------------------------
+
+SpaceBeforeParens: ControlStatements
+SpaceBeforeAssignmentOperators: true
+
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+SpaceInEmptyBlock: false
+SpaceInEmptyParentheses: false
+
+# ------------------------------------------------------------
+# Pointers / References
+# ------------------------------------------------------------
+
+DerivePointerAlignment: false
+PointerAlignment: Left
+ReferenceAlignment: Left
+
+# ------------------------------------------------------------
+# Includes
+# ------------------------------------------------------------
+
+SortIncludes: Never
+IncludeBlocks: Preserve
+
+# ------------------------------------------------------------
+# Namespaces
+# ------------------------------------------------------------
+
+NamespaceIndentation: None
+
+# ------------------------------------------------------------
+# Access modifiers
+# ------------------------------------------------------------
+
+AccessModifierOffset: -4
+
+# ------------------------------------------------------------
+# Functions
+# ------------------------------------------------------------
+
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Never
+
+# ------------------------------------------------------------
+# Constructor Initializers
+# ------------------------------------------------------------
+
+BreakConstructorInitializers: BeforeComma
+ConstructorInitializerIndentWidth: 4
+PackConstructorInitializers: BinPack
+
+# ------------------------------------------------------------
+# Templates
+# ------------------------------------------------------------
+
+AlwaysBreakTemplateDeclarations: Yes
+
+# ------------------------------------------------------------
+# Comments
+# ------------------------------------------------------------
+
+ReflowComments: false
+CommentPragmas: '^IWYU pragma:'
+
+# ------------------------------------------------------------
+# Empty lines
+# ------------------------------------------------------------
+
+MaxEmptyLinesToKeep: 1
+
+# ------------------------------------------------------------
+# Trailing commas
+# ------------------------------------------------------------
+
+InsertTrailingCommas: None
+
+# ------------------------------------------------------------
+# Misc
+# ------------------------------------------------------------
+
+SpaceAfterCStyleCast: false
+Cpp11BracedListStyle: true
+EmptyLineBeforeAccessModifier: Always

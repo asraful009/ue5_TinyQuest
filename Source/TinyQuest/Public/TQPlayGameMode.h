@@ -13,8 +13,7 @@ UCLASS()
 class TINYQUEST_API ATQPlayGameMode : public AGameModeBase
 {
     GENERATED_BODY()
-    
-    
+
 public:
     ATQPlayGameMode();
 
